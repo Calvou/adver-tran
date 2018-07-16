@@ -1,0 +1,111 @@
+#management:
+#  port: 9151
+#  context-path: /monitor
+#endpoints:
+#  enabled: true # 开启所有监控断点  fase时 可以指定断点开启监控
+
+---
+#############################dev开发环境配置########################################
+server:
+  port: 8050
+  context-path: /${spring.application.name}
+
+spring:
+  profiles: dev
+  application:
+    name: yunzhi
+    
+  mongodb:
+    host: 101.132.222.202
+    port: 27017
+    database: ifsdb
+    username: ifs
+    password: ifs
+
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 15
+    # Redis服务器地址
+    #host: localhost
+    host: 101.132.222.202
+    # Redis服务器连接端口
+    port: 6379
+
+yunzhi:
+  crt:
+    key: 123456789
+
+# 应用自定义配置
+logging:
+  config: classpath:logback-domi.xml
+
+---
+
+#############################uat联调测试环境配置########################################
+server:
+  port: 8050
+  context-path: /${spring.application.name}
+
+spring:
+  profiles: uat
+  application:
+    name: yunzhi
+    
+  mongodb:
+    host: 10.80.224.95
+    port: 27017
+    database: ifsdb
+    username: ifs
+    password: ifs
+
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 14
+    # Redis服务器地址
+    host: 10.80.224.95
+    # Redis服务器连接端口
+    port: 6379
+
+yunzhi:
+  srt:
+    key: 123456789
+
+# 应用自定义配置
+logging:
+  config: classpath:logback-domi.xml
+
+---
+
+#############################pro环境配置########################################
+server:
+  port: 8050
+  context-path: /${spring.application.name}
+
+spring:
+  profiles: pro
+  application:
+    name: yunzhi
+    
+  mongodb:
+    host: 127.0.0.1
+    port: 27017
+    database: ifsdb
+    username: ifs
+    password: ifs
+
+  redis:
+    # Redis数据库索引（默认为0）
+    database: 15
+    # Redis服务器地址
+    #host: localhost
+    host: 127.0.0.1
+    # Redis服务器连接端口
+    port: 6379
+
+yunzhi:
+  srt:
+    key: 123456789
+
+# 应用自定义配置
+logging:
+  config: classpath:envs/logback-domi-pro.xml
